@@ -1,0 +1,58 @@
+{
+    "name": "dotkernel/dot-totp",
+    "type": "library",
+    "description": "DotKernel TOTP authorization component",
+    "license": "MIT",
+    "homepage": "https://github.com/dotkernel/dot-totp",
+    "keywords": [
+        "dotkernel",
+        "mezzio",
+        "totp"
+    ],
+    "authors": [
+        {
+            "name": "Dotkernel Team",
+            "email": "team@dotkernel.com"
+        }
+    ],
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "require": {
+        "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+        "endroid/qr-code":  "^6.0.9",
+        "mezzio/mezzio-router": "^3.17",
+        "psr/http-message": "^1.0 || ^2.0",
+        "psr/http-server-middleware": "^1.0",
+        "laminas/laminas-diactoros": "^3.3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^10.2",
+        "vimeo/psalm": "^6.14.3",
+        "laminas/laminas-coding-standard": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dot\\TOTP\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "DotTest\\TOTP\\": "test/"
+        }
+    },
+    "scripts": {
+        "check": [
+            "@cs-check",
+            "@test"
+        ],
+        "cs-check": "phpcs",
+        "cs-fix": "phpcbf",
+        "test": "phpunit --colors=always",
+        "test-coverage": "phpunit --colors=always --coverage-clover clover.xml",
+        "static-analysis": "psalm --shepherd --stats"
+    }
+}
