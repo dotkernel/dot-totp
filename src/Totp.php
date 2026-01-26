@@ -1,6 +1,6 @@
 <?php
 
-namespace Dot\TOTP\Service;
+namespace Dot\Totp;
 
 use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\SvgWriter;
@@ -8,13 +8,12 @@ use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
 use Random\RandomException;
 
-class TOTPService
+class Totp
 {
-    private int $period       = 30;
-    private int $digits       = 6;
-    private string $algorithm = 'sha1';
-
     public function __construct(
+        protected int $period       = 30,
+        protected int $digits       = 6,
+        protected string $algorithm = 'sha1'
     ) {
     }
 
