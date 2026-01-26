@@ -2,10 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dot\TOTP;
-
-use Dot\TOTP\Factory\AuthTOTPMiddlewareFactory;
-use Dot\TOTP\Middleware\AuthTOTPMiddleware;
+namespace Dot\Totp;
 
 class ConfigProvider
 {
@@ -19,8 +16,8 @@ class ConfigProvider
     public function getDependencyConfig(): array
     {
         return [
-            'factories'          => [
-                AuthTOTPMiddleware::class => AuthTOTPMiddlewareFactory::class,
+            'factories' => [
+                Totp::class => TotpFactory::class,
             ],
         ];
     }

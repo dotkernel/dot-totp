@@ -21,13 +21,10 @@
             "dealerdirect/phpcodesniffer-composer-installer": true
         }
     },
+
     "require": {
         "php": "~8.2.0 || ~8.3.0 || ~8.4.0",
-        "endroid/qr-code":  "^6.0.9",
-        "mezzio/mezzio-router": "^3.17",
-        "psr/http-message": "^1.0 || ^2.0",
-        "psr/http-server-middleware": "^1.0",
-        "laminas/laminas-diactoros": "^3.3.0"
+        "endroid/qr-code":  "^6.0.9"
     },
     "require-dev": {
         "phpunit/phpunit": "^10.2",
@@ -36,12 +33,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Dot\\TOTP\\": "src/"
+            "Dot\\Totp\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "DotTest\\TOTP\\": "test/"
+            "DotTest\\Totp\\": "test/"
         }
     },
     "scripts": {
