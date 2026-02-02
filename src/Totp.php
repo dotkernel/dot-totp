@@ -1,18 +1,41 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Dot\Totp;
 
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Writer\SvgWriter;
 use Endroid\QrCode\Encoding\Encoding;
 use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\SvgWriter;
 use Random\RandomException;
+
+use function chr;
+use function hash_equals;
+use function hash_hmac;
+use function intdiv;
+use function ord;
+use function pack;
+use function preg_replace;
+use function random_int;
+use function rawurlencode;
+use function sprintf;
+use function str_pad;
+use function strlen;
+use function strpos;
+use function strtoupper;
+use function substr;
+use function time;
+use function trim;
+use function unpack;
+
+use const STR_PAD_LEFT;
 
 class Totp
 {
     public function __construct(
-        protected int $period       = 30,
-        protected int $digits       = 6,
+        protected int $period = 30,
+        protected int $digits = 6,
         protected string $algorithm = 'sha1'
     ) {
     }
@@ -22,7 +45,7 @@ class Totp
      */
     public function generateSecretBase32(int $length = 16): string
     {
-        $chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+        $chars  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
         $secret = '';
         for ($i = 0; $i < $length; $i++) {
             $secret .= $chars[random_int(0, 31)];
@@ -36,7 +59,7 @@ class Totp
     public function getCode(string $secret, ?int $timestamp = null): string
     {
         $timestamp = $timestamp ?? time();
-        $counter = intdiv($timestamp, $this->period);
+        $counter   = intdiv($timestamp, $this->period);
         $secretKey = $this->base32Decode($secret);
 
         $binaryCounter = pack('N*', 0) . pack('N*', $counter);
@@ -54,7 +77,7 @@ class Totp
      */
     public function verifyCode(string $secret, string $code, int $window = 1): bool
     {
-        $now = time();
+        $now  = time();
         $code = trim($code);
 
         // Check current time period plus/minus window
@@ -76,7 +99,7 @@ class Totp
         string $issuer,
         string $secret
     ): string {
-        $label = rawurlencode($label);
+        $label         = rawurlencode($label);
         $issuerEncoded = rawurlencode($issuer);
 
         return sprintf(
@@ -114,29 +137,43 @@ class Totp
     private function base32Decode(string $secret): string
     {
         $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-        $secret = strtoupper($secret);
-        $secret = preg_replace('/[^A-Z2-7]/', '', $secret) ?? '';
+        $secret   = strtoupper($secret);
+        $secret   = preg_replace('/[^A-Z2-7]/', '', $secret) ?? '';
 
-        $bits = '';
-        $value = 0;
+        $bits     = '';
+        $value    = 0;
         $bitCount = 0;
 
         for ($i = 0; $i < strlen($secret); $i++) {
-            $char = $secret[$i];
+            $char  = $secret[$i];
             $index = strpos($alphabet, $char);
-            if ($index === false) {
-                continue;
-            }
 
-            $value = ($value << 5) | $index;
-            $bitCount += 5;
+            if ($index !== false) {
+                $value     = ($value << 5) | $index;
+                $bitCount += 5;
 
-            if ($bitCount >= 8) {
-                $bitCount -= 8;
-                $bits .= chr(($value >> $bitCount) & 0xFF);
+                if ($bitCount >= 8) {
+                    $bitCount -= 8;
+                    $bits     .= chr(($value >> $bitCount) & 0xFF);
+                }
             }
         }
 
         return $bits;
+    }
+
+    public function getPeriod(): int
+    {
+        return $this->period;
+    }
+
+    public function getDigits(): int
+    {
+        return $this->digits;
+    }
+
+    public function getAlgorithm(): string
+    {
+        return $this->algorithm;
     }
 }
