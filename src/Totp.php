@@ -33,6 +33,8 @@ use const STR_PAD_LEFT;
 
 class Totp
 {
+    public const string BASE32_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
+
     public function __construct(
         protected int $period = 30,
         protected int $digits = 6,
@@ -45,10 +47,9 @@ class Totp
      */
     public function generateSecretBase32(int $length = 16): string
     {
-        $chars  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
         $secret = '';
         for ($i = 0; $i < $length; $i++) {
-            $secret .= $chars[random_int(0, 31)];
+            $secret .= self::BASE32_CHARS[random_int(0, 31)];
         }
         return $secret;
     }
@@ -136,9 +137,8 @@ class Totp
      */
     private function base32Decode(string $secret): string
     {
-        $alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ234567';
-        $secret   = strtoupper($secret);
-        $secret   = preg_replace('/[^A-Z2-7]/', '', $secret) ?? '';
+        $secret = strtoupper($secret);
+        $secret = preg_replace('/[^A-Z2-7]/', '', $secret) ?? '';
 
         $bits     = '';
         $value    = 0;
@@ -146,7 +146,7 @@ class Totp
 
         for ($i = 0; $i < strlen($secret); $i++) {
             $char  = $secret[$i];
-            $index = strpos($alphabet, $char);
+            $index = strpos(self::BASE32_CHARS, $char);
 
             if ($index !== false) {
                 $value     = ($value << 5) | $index;
