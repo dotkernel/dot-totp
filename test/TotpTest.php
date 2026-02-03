@@ -8,6 +8,10 @@ use Dot\Totp\Totp;
 use PHPUnit\Framework\TestCase;
 use Random\RandomException;
 
+use function explode;
+use function password_verify;
+use function strlen;
+
 class TotpTest extends TestCase
 {
     public function testConstructorDefaults(): void
@@ -71,5 +75,61 @@ class TotpTest extends TestCase
         $this->assertStringContainsString('xmlns="http://www.w3.org/2000/svg"', $svg);
         $this->assertStringContainsString('width="100px"', $svg);
         $this->assertStringContainsString('height="100px"', $svg);
+    }
+
+    /**
+     * @throws RandomException
+     */
+    public function testGenerateRecoveryCodes(): void
+    {
+        $totp = new Totp();
+
+        $count     = 5;
+        $length    = 8;
+        $separator = '-';
+
+        $codes = $totp->generateRecoveryCodes($count, $length, $separator);
+
+        $this->assertCount($count, $codes);
+
+        foreach ($codes as $code) {
+            $parts = explode($separator, $code);
+            $this->assertCount(2, $parts);
+            $this->assertSame((int) ($length / 2), strlen($parts[0]));
+            $this->assertSame((int) ($length / 2), strlen($parts[1]));
+        }
+    }
+
+    public function testHashRecoveryCodes(): void
+    {
+        $totp   = new Totp();
+        $codes  = ['TEST-RECO', 'RECO-TEST'];
+        $hashed = $totp->hashRecoveryCodes($codes);
+
+        foreach ($hashed as $i => $hash) {
+            $this->assertNotSame($codes[$i], $hash);
+            $this->assertTrue(password_verify($codes[$i], $hash));
+        }
+    }
+
+    public function testValidateRecoveryCode(): void
+    {
+        $totp = new Totp();
+
+        $codes  = ['TEST-RECO', 'RECO-TEST'];
+        $hashed = $totp->hashRecoveryCodes($codes);
+
+        $input  = 'TEST-RECO';
+        $result = $totp->validateRecoveryCode($input, $hashed);
+
+        $this->assertTrue($result);
+        $this->assertCount(1, $hashed);
+        $this->assertFalse(password_verify($input, $hashed[0]));
+
+        $invalid       = 'TEST-TEST';
+        $resultInvalid = $totp->validateRecoveryCode($invalid, $hashed);
+
+        $this->assertFalse($resultInvalid);
+        $this->assertCount(1, $hashed);
     }
 }
