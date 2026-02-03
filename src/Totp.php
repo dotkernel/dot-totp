@@ -10,12 +10,16 @@ use Endroid\QrCode\QrCode;
 use Endroid\QrCode\Writer\SvgWriter;
 use Random\RandomException;
 
+use function array_map;
+use function array_values;
 use function chr;
 use function hash_equals;
 use function hash_hmac;
 use function intdiv;
 use function ord;
 use function pack;
+use function password_hash;
+use function password_verify;
 use function preg_replace;
 use function random_int;
 use function rawurlencode;
@@ -29,6 +33,7 @@ use function time;
 use function trim;
 use function unpack;
 
+use const PASSWORD_DEFAULT;
 use const STR_PAD_LEFT;
 
 class Totp
@@ -160,6 +165,44 @@ class Totp
         }
 
         return $bits;
+    }
+
+    /**
+     * @throws RandomException
+     */
+    public function generateRecoveryCodes(int $count = 8, int $length = 10, string $separator = '-'): array
+    {
+        $codes = [];
+
+        for ($i = 0; $i < $count; $i++) {
+            $code = '';
+            for ($j = 0; $j < $length; $j++) {
+                $code .= self::BASE32_CHARS[random_int(0, strlen(self::BASE32_CHARS) - 1)];
+            }
+
+            $half    = intdiv(strlen($code), 2);
+            $code    = substr($code, 0, $half) . $separator . substr($code, $half);
+            $codes[] = $code;
+        }
+
+        return $codes;
+    }
+
+    public function hashRecoveryCodes(array $codes): array
+    {
+        return array_map(fn($code) => password_hash($code, PASSWORD_DEFAULT), $codes);
+    }
+
+    public function validateRecoveryCode(string $inputCode, array &$hashedCodes): bool
+    {
+        foreach ($hashedCodes as $index => $hash) {
+            if (password_verify($inputCode, $hash)) {
+                unset($hashedCodes[$index]);
+                $hashedCodes = array_values($hashedCodes);
+                return true;
+            }
+        }
+        return false;
     }
 
     public function getPeriod(): int
