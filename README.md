@@ -11,7 +11,8 @@ Dotkernel's TOTP authentication.
 [![GitHub license](https://img.shields.io/github/license/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/blob/1.0/LICENSE.md)
 
 [![Build Static](https://github.com/dotkernel/dot-totp/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-totp/actions/workflows/continuous-integration.yml)
-[![codecov](https://codecov.io/gh/dotkernel/dot-totp/graph/badge.svg?token=DayAoD2Oj6)](https://codecov.io/gh/dotkernel/dot-totp)
+[![codecov](https://codecov.io/gh/dotkernel/dot-totp/graph/badge.svg?token=R5PopWHvRu)](https://codecov.io/gh/dotkernel/dot-totp)
+[![PHPStan](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml)
 
 ## Install
 
