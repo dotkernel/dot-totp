@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dot\test;
+namespace DotTest\Totp;
 
 use Dot\Totp\Totp;
 use PHPUnit\Framework\TestCase;

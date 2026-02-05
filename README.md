@@ -2,6 +2,18 @@
 
 Dotkernel's TOTP authentication.
 
+![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-totp)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-totp/1.0.0)
+
+[![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/issues)
+[![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/network)
+[![GitHub stars](https://img.shields.io/github/stars/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/stargazers)
+[![GitHub license](https://img.shields.io/github/license/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/blob/1.0/LICENSE.md)
+
+[![Build Static](https://github.com/dotkernel/dot-totp/actions/workflows/continuous-integration.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-totp/actions/workflows/continuous-integration.yml)
+[![codecov](https://codecov.io/gh/dotkernel/dot-totp/graph/badge.svg?token=R5PopWHvRu)](https://codecov.io/gh/dotkernel/dot-totp)
+[![PHPStan](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml)
+
 ## Install
 
 You can install dot-totp by running the following command:
@@ -14,7 +26,6 @@ composer require dotkernel/dot-totp
 
 > **Note:** These instructions are written in the style of Mezzio middleware configuration and assume the use of Doctrine ORM.  
 > They can be adapted to any database layer or configuration style. If you are using a different framework or service container, follow the same logical steps while adjusting the syntax and configuration to match your environment.
-
 
 Create a new file configuration `config/autoload/totp.global.php`.
 
@@ -85,6 +96,7 @@ trait TotpTrait
 To enable TOTP, generate a temporary secret and encode it into a QR code, which the user scans with an authenticator app (e.g., Google Authenticator, Authy). The user then confirms by providing a one-time code from the app.
 
 **Steps:**
+
 1. Generate a temporary Base32 secret.
 2. Build a provisioning URI with a label and issuer.
 3. Render the URI as a QR code.

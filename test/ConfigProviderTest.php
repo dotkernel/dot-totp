@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Dot\test;
+namespace DotTest\Totp;
 
 use Dot\Totp\ConfigProvider;
 use Dot\Totp\Totp;

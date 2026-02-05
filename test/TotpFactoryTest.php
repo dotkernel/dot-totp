@@ -2,9 +2,8 @@
 
 declare(strict_types=1);
 
-namespace Dot\test;
+namespace DotTest\Totp;
 
-use Dot\Totp\Totp;
 use Dot\Totp\TotpFactory;
 use PHPUnit\Framework\MockObject\Exception;
 use PHPUnit\Framework\TestCase;
@@ -37,7 +36,6 @@ class TotpFactoryTest extends TestCase
         $factory = new TotpFactory();
         $totp    = $factory($container);
 
-        $this->assertInstanceOf(Totp::class, $totp);
         $this->assertSame(60, $totp->getPeriod());
         $this->assertSame(8, $totp->getDigits());
         $this->assertSame('test', $totp->getAlgorithm());
@@ -56,7 +54,6 @@ class TotpFactoryTest extends TestCase
         $factory = new TotpFactory();
         $totp    = $factory($container);
 
-        $this->assertInstanceOf(Totp::class, $totp);
         $this->assertSame(30, $totp->getPeriod());
         $this->assertSame(6, $totp->getDigits());
         $this->assertSame('sha1', $totp->getAlgorithm());
