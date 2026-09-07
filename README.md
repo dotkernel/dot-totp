@@ -3,7 +3,7 @@
 Dotkernel's TOTP authentication.
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-totp)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-totp/1.0.0)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/dependency-v/dotkernel/dot-totp/php)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/network)
