@@ -1,0 +1,20 @@
+docs_dir: docs/book
+site_dir: docs/html
+extra:
+  project: Packages
+  current_version: v1
+  versions:
+    - v1
+nav:
+  - Home: index.md
+  - v1:
+      - Overview: v1/overview.md
+      - Installation: v1/installation.md
+      - Configuration: v1/configuration.md
+      - Usage: v1/usage.md
+      - Methods: v1/methods.md
+site_name: dot-totp
+site_description: "DotKernel TOTP authorization component"
+repo_url: "https://github.com/dotkernel/dot-totp"
+plugins:
+  - search
