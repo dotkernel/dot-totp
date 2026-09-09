@@ -9,7 +9,7 @@ $totp = $container->get(Totp::class);
 ```
 
 | Method | Purpose |
-|---|---|
+| --- | --- |
 | `generateSecretBase32(int $length = 16): string` | A new random Base32 secret. |
 | `getCode(string $secret, ?int $timestamp = null): string` | The code for a secret at a moment in time; defaults to now. |
 | `verifyCode(string $secret, string $code, int $window = 1): bool` | Whether a submission matches, checking `$window` steps either side of now. |
@@ -165,7 +165,7 @@ trait TotpTrait
 ```
 
 | Column | Needed for | Purpose |
-|---|---|---|
+| --- | --- | --- |
 | `totp_secret` | all methods | The shared Base32 secret. |
 | `totp_enabled` | all methods | Whether the second factor is on. |
 | `totp_method` | all methods | `app`, `email` or `sms`, so the application knows how to deliver a code. |

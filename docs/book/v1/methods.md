@@ -3,7 +3,7 @@
 A code is derived from a shared secret and the current time step, so the same code can reach the user three ways:
 
 | Method | How the user gets the code | Secret lives |
-|---|---|---|
+| --- | --- | --- |
 | `app` | Scans a QR code once, then their device derives every code offline | Server and device |
 | `email` | The server derives the code and sends it by email | Server only |
 | `sms` | The server derives the code and sends it by SMS | Server only |
