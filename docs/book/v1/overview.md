@@ -1,12 +1,8 @@
-# dot-totp
+# Overview
 
 Dotkernel's TOTP authentication.
 
 > dot-totp implements RFC 6238 one-time passwords and renders enrolment QR codes with [endroid/qr-code](https://github.com/endroid/qr-code)
-
-## Documentation
-
-Documentation is available at: https://docs.dotkernel.org/dot-totp/.
 
 ## Version History
 
@@ -17,7 +13,7 @@ Documentation is available at: https://docs.dotkernel.org/dot-totp/.
 ## Badges
 
 ![OSS Lifecycle](https://img.shields.io/osslifecycle/dotkernel/dot-totp)
-![PHP from Packagist (specify version)](https://img.shields.io/packagist/dependency-v/dotkernel/dot-totp/php)
+![PHP from Packagist (specify version)](https://img.shields.io/packagist/php-v/dotkernel/dot-totp/1.0.0)
 
 [![GitHub issues](https://img.shields.io/github/issues/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dotkernel/dot-totp)](https://github.com/dotkernel/dot-totp/network)
@@ -28,12 +24,8 @@ Documentation is available at: https://docs.dotkernel.org/dot-totp/.
 [![codecov](https://codecov.io/gh/dotkernel/dot-totp/graph/badge.svg?token=R5PopWHvRu)](https://codecov.io/gh/dotkernel/dot-totp)
 [![PHPStan](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml/badge.svg?branch=1.0)](https://github.com/dotkernel/dot-totp/actions/workflows/static-analysis.yml)
 
-## Installation
+## Extra features
 
-Install `dotkernel/dot-totp` by executing the following Composer command:
+One implementation serves all three delivery methods - authenticator app, email and SMS - because the server can always derive the code it expects.
 
-```shell
-composer require dotkernel/dot-totp
-```
-
-Then register `Dot\Totp\ConfigProvider::class` in your configuration aggregator (to `config/config.php` for example) and add the options described in the [documentation](https://docs.dotkernel.org/dot-totp/v1/configuration/).
+The component also issues single-use recovery codes, and renders the enrolment QR code as inline SVG, so no image file has to be written or served.
