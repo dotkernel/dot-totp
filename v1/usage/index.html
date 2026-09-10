@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <meta name="description" content="DotKernel TOTP authorization component">
+        
+        
+
+        
+        
+            
+        
+        <meta name="docsearch:version" content="1.0.0,latest">
+        <meta name="docsearch:language" content="en">
+        <meta name="docsearch:component" content="dot-totp">
+
+        
+        <link rel="canonical" href="https://docs.dotkernel.org/dot-totp/v1/usage/">
+        
+        <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
+
+        <title>Usage - dot-totp - Dotkernel Documentation</title>
+
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap.css">
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/bootstrap-icons.min.css">
+        <link rel="stylesheet" href="https://docs.dotkernel.org/css/docs.css">
+        <script src="https://docs.dotkernel.org/js/bootstrap.js" defer></script>
+        <script src="https://docs.dotkernel.org/js/docs.js" defer></script>
+        <script src="https://docs.dotkernel.org/js/scripts.js" defer></script>
+    </head>
+    <body data-bs-spy="scroll" data-bs-target=".toc" data-bs-offset="100">
+
+        
+        <nav class="navbar navbar-expand-lg bg-body-tertiary bg-light dk-nav py-3" data-bs-theme="light">
+    <div class="container justify-content-between">
+        <div class="dk-nav-icon d-flex align-items-center">
+            <a class="navbar-brand" href="https://docs.dotkernel.org/">
+                <img alt="Dotkernel Logo" class="d-inline-block align-text-top" height="50"
+                     src="https://docs.dotkernel.org//img/dk_logomark_white.svg" width="45"/>
+            </a>
+
+            <div class="dk-nav-icon-items">
+                <span style="font-size: 12px; line-height: 13px">Dotkernel Documentation</span>
+
+                <div class="dropdown" data-bs-theme="light">
+                    <span class="fw-bold dropdown-toggle dk-pkg-name" data-bs-toggle="dropdown" aria-expanded="false">Packages</span>
+                    <ul class="dropdown-menu">
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/api-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">API</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/admin-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Admin</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/frontend-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Frontend</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/light-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Light</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/queue-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Queue</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item bg-dark-subtle">
+                            <a href="https://docs.dotkernel.org/packages/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Packages</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/development/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Development</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                        <li class="dropdown-item ">
+                            <a href="https://docs.dotkernel.org/headless-documentation/" class="nav-link d-flex gap-4 align-items-center">
+                                <i class="bi bi-arrow-return-right text-primary"></i>
+                                <div class="py-1">
+                                    <span class="fw-bold d-block">Headless Platform</span>
+                                </div>
+                            </a>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarText">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+<!--                <li class="nav-item">-->
+<!--                    <a href="#" class="nav-link fw-bold text-white" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal" title="Open search">-->
+<!--                        <i class="bi bi-search"></i> Search-->
+<!--                    </a>-->
+<!--                </li>-->
+                <li class="nav-item">
+                    <a class="nav-link fw-bold text-white" href="https://github.com/dotkernel/dot-totp" title="Go to dot-totp repository" target="_blank">
+                        <i class="bi bi-github"></i>
+                        GitHub
+                    </a>
+                </li>
+                <li class="nav-item">
+                    
+    
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+        
+        <div class="container">
+    <nav aria-label="breadcrumb" class="nav_breadcrumb">
+        <ol class="breadcrumb">
+            
+                <li class="breadcrumb-item"><a href="https://docs.dotkernel.org/">Overview</a></li>
+                
+
+                
+                    <li class="breadcrumb-item"><a href="../..">dot-totp</a></li>
+
+                    
+                        
+                            
+                            
+                        
+                    
+
+                    <li class="breadcrumb-item active" aria-current="page">Usage</li>
+                
+            
+        </ol>
+    </nav>
+</div>
+
+        
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 right_sidebar">
+                    
+                    
+    <div class="subnavigation hidden-print">
+<!--        <h4 class="subnavigation__title">-->
+<!--            <a href="../..">dot-totp</a>-->
+<!--        </h4>-->
+
+        <h5 class="subnavigation__title">Table of Contents</h5>
+
+        <ul class="subnavigation__list">
+            
+
+                
+                
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../overview/" class="subnavigation__link">Overview</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../installation/" class="subnavigation__link">Installation</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../configuration/" class="subnavigation__link">Configuration</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">Usage</a>
+</li>
+
+                    
+                        
+<li class="subnavigation__list-item ">
+    <a href="../methods/" class="subnavigation__link">Methods</a>
+</li>
+
+                    
+                
+            
+        </ul>
+    </div>
+
+                    
+
+                    
+                    
+                    
+    
+
+    
+    
+        <div class="toc">
+            <h6 class="toc__headline">On this page</h6>
+            <ul class="toc__list">
+            
+                <li class="toc__entry">
+                    <a href="#entity-trait" class="toc__link nav-link">Entity trait</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#enrolling-a-user" class="toc__link nav-link">Enrolling a user</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#sending-a-code-by-email-or-sms" class="toc__link nav-link">Sending a code by email or SMS</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#verifying-a-code" class="toc__link nav-link">Verifying a code</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#recovery-codes" class="toc__link nav-link">Recovery codes</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#delivery-method-usage" class="toc__link nav-link">Delivery method usage</a>
+                </li>
+            
+            </ul>
+        </div>
+    
+
+                    
+                </div>
+                <div class="col-lg-9 main_docs">
+                    
+                    
+
+
+
+
+    
+    
+
+    
+    
+        
+        
+            
+        
+        
+        <div class="md-actions-bar">
+            <div class="md-actions">
+                <button type="button" class="md-actions-toggle" aria-haspopup="true" aria-expanded="false"
+                        onclick="toggleMdActionsMenu(this)">
+                    <span class="md-actions-toggle-label">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/></svg>
+                        <span>Copy Page</span>
+                    </span>
+                    <span class="md-actions-toggle-chev">
+                        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+                    </span>
+                </button>
+                <div class="md-actions-menu" role="menu">
+                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../usage.md"
+                            onclick="copyMarkdownPage(this)">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                        <span class="label">Copy Page (as Markdown)</span>
+                    </button>
+                    <a href="../usage.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
+                       class="md-actions-item" role="menuitem" title="View the Markdown source of this page">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/><path d="M8 15h8M8 11h4"/></svg>
+                        <span class="label">View as Markdown</span>
+                    </a>
+                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/dot-totp/v1/usage.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
+                       class="md-actions-item" role="menuitem" title="Open this page in Claude">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg>
+                        <span class="label">Open in Claude</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    
+
+    <h1 id="usage">Usage</h1>
+<p>The container gives you a single service, configured from <code>dot_totp.options</code>:</p>
+<pre class="highlight"><code class="language-php">use Dot\Totp\Totp;
+
+$totp = $container-&gt;get(Totp::class);</code></pre>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>generateSecretBase32(int $length = 16): string</code></td>
+<td>A new random Base32 secret.</td>
+</tr>
+<tr>
+<td><code>getCode(string $secret, ?int $timestamp = null): string</code></td>
+<td>The code for a secret at a moment in time; defaults to now.</td>
+</tr>
+<tr>
+<td><code>verifyCode(string $secret, string $code, int $window = 1): bool</code></td>
+<td>Whether a submission matches, checking <code>$window</code> steps either side of now.</td>
+</tr>
+<tr>
+<td><code>getProvisioningUri(string $label, string $issuer, string $secret): string</code></td>
+<td>The <code>otpauth://totp/...</code> URI an authenticator app scans.</td>
+</tr>
+<tr>
+<td><code>generateInlineSvgQr(string $data, int $size = 180): string</code></td>
+<td>An inline SVG QR code for that URI.</td>
+</tr>
+<tr>
+<td><code>generateRecoveryCodes(int $count = 8, int $length = 10, string $separator = '-'): array</code></td>
+<td>Single-use fallback codes in plain text.</td>
+</tr>
+<tr>
+<td><code>hashRecoveryCodes(array $codes): array</code></td>
+<td>The same codes hashed with <code>password_hash()</code>, for storage.</td>
+</tr>
+<tr>
+<td><code>validateRecoveryCode(string $inputCode, array &amp;$hashedCodes): bool</code></td>
+<td>Consumes a matching code, <strong>modifying the array by reference</strong>.</td>
+</tr>
+<tr>
+<td><code>getPeriod(): int</code> / <code>getDigits(): int</code> / <code>getAlgorithm(): string</code></td>
+<td>The configured options.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="entity-trait">Entity trait</h2>
+<p>Add the following trait to the entity that authenticates:</p>
+<pre class="highlight"><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace YourApp\Entity;
+
+use DateTimeImmutable;
+use Doctrine\ORM\Mapping as ORM;
+
+use function max;
+
+trait TotpTrait
+{
+    public const string TOTP_METHOD_APP   = 'app';
+    public const string TOTP_METHOD_EMAIL = 'email';
+    public const string TOTP_METHOD_SMS   = 'sms';
+
+    #[ORM\Column(name: 'totp_secret', type: 'string', length: 32, nullable: true)]
+    protected ?string $totpSecret = null;
+
+    #[ORM\Column(name: 'totp_enabled', type: 'boolean', options: ['default' =&gt; false])]
+    protected bool $totpEnabled = false;
+
+    #[ORM\Column(name: 'totp_method', type: 'string', length: 16, options: ['default' =&gt; 'app'])]
+    protected string $totpMethod = self::TOTP_METHOD_APP;
+
+    #[ORM\Column(name: 'totp_code_sent_at', type: 'datetime_immutable', nullable: true)]
+    protected ?DateTimeImmutable $totpCodeSentAt = null;
+
+    #[ORM\Column(name: 'totp_attempts', type: 'smallint', options: ['default' =&gt; 0])]
+    protected int $totpAttempts = 0;
+
+    /** @var array&lt;int, string&gt;|null */
+    #[ORM\Column(name: 'totp_recovery_codes', type: 'json', nullable: true)]
+    protected ?array $totpRecoveryCodes = null;
+
+    public function enableTotp(string $secret, string $method = self::TOTP_METHOD_APP): self
+    {
+        $this-&gt;totpSecret  = $secret;
+        $this-&gt;totpEnabled = true;
+        $this-&gt;totpMethod  = $method;
+
+        return $this;
+    }
+
+    public function disableTotp(): self
+    {
+        $this-&gt;totpSecret        = null;
+        $this-&gt;totpEnabled       = false;
+        $this-&gt;totpMethod        = self::TOTP_METHOD_APP;
+        $this-&gt;totpCodeSentAt    = null;
+        $this-&gt;totpAttempts      = 0;
+        $this-&gt;totpRecoveryCodes = null;
+        return $this;
+    }
+
+    public function isTotpEnabled(): bool
+    {
+        return $this-&gt;totpEnabled;
+    }
+
+    public function getTotpSecret(): ?string
+    {
+        return $this-&gt;totpSecret;
+    }
+
+    public function rotateTotpSecret(string $secret): self
+    {
+        $this-&gt;totpSecret = $secret;
+
+        return $this;
+    }
+
+    public function getTotpMethod(): string
+    {
+        return $this-&gt;totpMethod;
+    }
+
+    public function usesTotpDelivery(): bool
+    {
+        return $this-&gt;totpMethod !== self::TOTP_METHOD_APP;
+    }
+
+    public function markTotpCodeSent(): self
+    {
+        $this-&gt;totpCodeSentAt = new DateTimeImmutable();
+        $this-&gt;totpAttempts   = 0;
+
+        return $this;
+    }
+
+    public function getTotpResendRetryAfter(int $resendInterval): int
+    {
+        if ($this-&gt;totpCodeSentAt === null) {
+            return 0;
+        }
+
+        $elapsed = (new DateTimeImmutable())-&gt;getTimestamp() - $this-&gt;totpCodeSentAt-&gt;getTimestamp();
+
+        return max(0, $resendInterval - $elapsed);
+    }
+
+    public function canResendTotpCode(int $resendInterval): bool
+    {
+        return $this-&gt;getTotpResendRetryAfter($resendInterval) === 0;
+    }
+
+    public function registerFailedTotpAttempt(): self
+    {
+        $this-&gt;totpAttempts++;
+
+        return $this;
+    }
+
+    public function hasTotpAttemptsLeft(int $maxAttempts): bool
+    {
+        return $this-&gt;totpAttempts &lt; $maxAttempts;
+    }
+
+    /**
+     * @return array&lt;int, string&gt;
+     */
+    public function getTotpRecoveryCodes(): array
+    {
+        return $this-&gt;totpRecoveryCodes ?? [];
+    }
+
+    /**
+     * @param array&lt;int, string&gt; $hashedCodes
+     */
+    public function setTotpRecoveryCodes(array $hashedCodes): self
+    {
+        $this-&gt;totpRecoveryCodes = $hashedCodes;
+
+        return $this;
+    }
+}</code></pre>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Needed for</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>totp_secret</code></td>
+<td>all methods</td>
+<td>The shared Base32 secret.</td>
+</tr>
+<tr>
+<td><code>totp_enabled</code></td>
+<td>all methods</td>
+<td>Whether the second factor is on.</td>
+</tr>
+<tr>
+<td><code>totp_method</code></td>
+<td>all methods</td>
+<td><code>app</code>, <code>email</code> or <code>sms</code>, so the application knows how to deliver a code.</td>
+</tr>
+<tr>
+<td><code>totp_code_sent_at</code></td>
+<td>email, SMS</td>
+<td>When the last code went out, driving the resend cooldown.</td>
+</tr>
+<tr>
+<td><code>totp_attempts</code></td>
+<td>email, SMS</td>
+<td>Wrong guesses made against the code in flight.</td>
+</tr>
+<tr>
+<td><code>totp_recovery_codes</code></td>
+<td>recovery codes</td>
+<td>Hashes of the codes not yet used.</td>
+</tr>
+</tbody>
+</table></div>
+<p>For an authenticator app with no recovery codes, <code>totp_secret</code> and <code>totp_enabled</code> are the only columns you need.</p>
+<pre class="highlight"><code class="language-php">#[ORM\Entity]
+class User
+{
+    use TotpTrait;
+}</code></pre>
+<p><code>totp_method</code> and <code>totp_attempts</code> carry defaults so the <code>ALTER TABLE</code> succeeds on a populated table.
+Then generate a migration:</p>
+<pre class="highlight"><code class="language-shell">php bin/doctrine migrations:diff</code></pre>
+<blockquote>
+<p>The method constants live on the trait, and PHP requires reading them through the class that uses it - <code>User::TOTP_METHOD_EMAIL</code>, not <code>TotpTrait::TOTP_METHOD_EMAIL</code>.</p>
+</blockquote>
+<h2 id="enrolling-a-user">Enrolling a user</h2>
+<p>An authenticator app enrols by scanning a QR code:</p>
+<pre class="highlight"><code class="language-php">$secret = $totp-&gt;generateSecretBase32();
+$uri    = $totp-&gt;getProvisioningUri($user-&gt;getIdentity(), 'Your App', $secret);
+$svg    = $totp-&gt;generateInlineSvgQr($uri);</code></pre>
+<p><code>generateInlineSvgQr()</code> returns SVG markup, so the template embeds it directly - there is no image file to write or serve.</p>
+<p>Hold <code>$secret</code> in the session, not in the database, until the user has typed a code from their app.
+Otherwise a QR code that was never scanned successfully leaves the user with a factor they cannot satisfy.</p>
+<pre class="highlight"><code class="language-php">if (! $totp-&gt;verifyCode($secret, $submittedCode)) {
+    return $this-&gt;error('That code is not correct. Check the time on your phone and try again.');
+}
+
+$user-&gt;enableTotp($secret);
+$entityManager-&gt;flush();</code></pre>
+<p>Email and SMS have nothing to scan, so enrolment is one call with a secret the user never sees:</p>
+<pre class="highlight"><code class="language-php">$user-&gt;enableTotp($totp-&gt;generateSecretBase32(), User::TOTP_METHOD_EMAIL);
+$entityManager-&gt;flush();</code></pre>
+<h2 id="sending-a-code-by-email-or-sms">Sending a code by email or SMS</h2>
+<p>Check the cooldown, derive the code with <code>getCode()</code>, stamp the send, then deliver the plain code:</p>
+<pre class="highlight"><code class="language-php">$resendInterval = 60;
+
+if (! $user-&gt;canResendTotpCode($resendInterval)) {
+    // 429, with Retry-After: $user-&gt;getTotpResendRetryAfter($resendInterval)
+    return $this-&gt;tooManyRequests($user-&gt;getTotpResendRetryAfter($resendInterval));
+}
+
+$code = $totp-&gt;getCode((string) $user-&gt;getTotpSecret());
+
+$user-&gt;markTotpCodeSent();
+$entityManager-&gt;flush();
+
+if ($user-&gt;getTotpMethod() === User::TOTP_METHOD_SMS) {
+    $this-&gt;smsGateway-&gt;send($user-&gt;getPhone(), sprintf('Your code is %s', $code));
+} else {
+    $this-&gt;mailer-&gt;send($user-&gt;getEmail(), sprintf('Your code is %s', $code));
+}</code></pre>
+<p><code>markTotpCodeSent()</code> also resets the attempt counter, so guesses spent on the previous code do not count against the new one.</p>
+<p>Email delivery pairs with <a href="https://docs.dotkernel.org/dot-mail/">dotkernel/dot-mail</a>.
+There is no Dotkernel SMS component, so <code>$this-&gt;smsGateway</code> is yours to provide.</p>
+<p>At sign-in, <code>usesTotpDelivery()</code> tells the two flows apart: an app user is asked for a code straight away, a delivery user needs one sent first.</p>
+<pre class="highlight"><code class="language-php">if ($user-&gt;isTotpEnabled() &amp;&amp; $user-&gt;usesTotpDelivery()) {
+    // send a code, then ask for it
+}</code></pre>
+<h2 id="verifying-a-code">Verifying a code</h2>
+<p>A code from an authenticator app is verified with the default window, which accepts the previous, current and next time step - about ninety seconds with a 30-second <code>period</code>, enough to absorb a phone's clock drift:</p>
+<pre class="highlight"><code class="language-php">if (! $totp-&gt;verifyCode((string) $user-&gt;getTotpSecret(), $submittedCode)) {
+    return $this-&gt;error('That code is not correct.');
+}</code></pre>
+<p>A delivered code has to survive a mail queue or an SMS carrier, so it needs a wider window, an attempt limit, and a rotation once accepted:</p>
+<pre class="highlight"><code class="language-php">$maxAttempts = 3;
+
+if (! $user-&gt;hasTotpAttemptsLeft($maxAttempts)) {
+    return $this-&gt;error('Too many attempts. Request a new code.');
+}
+
+// 30s period, 10 steps either side: roughly five minutes of grace
+if (! $totp-&gt;verifyCode((string) $user-&gt;getTotpSecret(), $submittedCode, window: 10)) {
+    $user-&gt;registerFailedTotpAttempt();
+    $entityManager-&gt;flush();
+
+    return $this-&gt;error('That code is not correct.');
+}
+
+// Accepted: rotate the secret so this code cannot be used again.
+$user-&gt;rotateTotpSecret($totp-&gt;generateSecretBase32());
+$entityManager-&gt;flush();</code></pre>
+<p>Pick the window from how long you are prepared to let a code live, divided by <code>period</code> - not from how long delivery usually takes.
+A number that only just covers a fast send will reject legitimate users the first time your mail queue backs up.</p>
+<blockquote>
+<p>Why the wider window needs the other two lines is explained in <a href="../methods/">Methods</a>.</p>
+</blockquote>
+<h2 id="recovery-codes">Recovery codes</h2>
+<p>Generate the codes once, show them once, and store only their hashes:</p>
+<pre class="highlight"><code class="language-php">$codes = $totp-&gt;generateRecoveryCodes();
+// ['A2C4E-6GH8J', 'K3M5P-7QR9S', ...]
+
+$user-&gt;setTotpRecoveryCodes($totp-&gt;hashRecoveryCodes($codes));
+$entityManager-&gt;flush();
+
+// $codes is the only chance the user has to write them down.</code></pre>
+<p><code>validateRecoveryCode()</code> takes the hashes <strong>by reference</strong> and removes the one it consumes, so the mutated array has to be persisted or the code stays usable:</p>
+<pre class="highlight"><code class="language-php">$hashedCodes = $user-&gt;getTotpRecoveryCodes();
+
+if (! $totp-&gt;validateRecoveryCode($submittedCode, $hashedCodes)) {
+    return $this-&gt;error('That recovery code is not valid.');
+}
+
+$user-&gt;setTotpRecoveryCodes($hashedCodes);
+$entityManager-&gt;flush();</code></pre>
+<h2 id="delivery-method-usage">Delivery method usage</h2>
+<p><a href="../methods/">Methods</a></p>
+
+
+
+
+    <nav>
+    <ul class="list-unstyled page-nav row w-100 mt-5 mb-3 pt-5 pb-3">
+        
+        <li class="col text-nowrap text-md-start">
+            
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../configuration/">
+                    <i class="bi bi-chevron-left"></i>
+                    Configuration
+                </a>
+            
+        </li>
+
+        
+        <li class="col text-nowrap text-md-end pe-0">
+            
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../methods/">
+                    Methods
+                    <i class="bi bi-chevron-right"></i>
+                </a>
+            
+        </li>
+    </ul>
+</nav>
+
+
+
+                    
+                </div>
+            </div>
+        </div>
+
+        
+        <footer class="footer">
+    <div class="container">
+        <hr class="mb-5" />
+
+        <div class="row">
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">API</p>
+
+                        <a href="https://docs.dotkernel.org/api-documentation/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Dotkernel web starter project suitable for building RESTful APIs
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">Admin</p>
+
+                        <a href="https://docs.dotkernel.org/admin-documentation/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Dotkernel web starter project suitable for admin applications
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">Frontend</p>
+
+                        <a href="https://docs.dotkernel.org/frontend-documentation/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Dotkernel web starter project suitable for frontend applications
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">Light</p>
+
+                        <a href="https://docs.dotkernel.org/light-documentation/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Dotkernel web starter project suitable for generating a simple website
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">Dotkernel Packages</p>
+
+                        <a href="https://docs.dotkernel.org/packages/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Dotkernel packages offering a wide range of tools
+                        </a>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 dk_widget">
+                        <p class="ms-0">Development environment</p>
+
+                        <a href="https://docs.dotkernel.org/development/">
+                            <i class="bi bi-arrow-return-right"></i>
+                            Install PHP, Apache, MariaDB, Composer, PhpMyAdmin, Node.js and Git on WSL2
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3 pt-3 mt-1">
+                <ul class="support__list row">
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://github.com/dotkernel" class="support__link" title="GitHub" target="_blank">
+                            <i class="bi bi-github"></i> GitHub
+                        </a>
+                    </li>
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://dotkernel.slack.com" class="support__link" title="Chat" target="_blank">
+                            <i class="bi bi-slack"></i> Slack
+                        </a>
+                    </li>
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://twitter.com/dotkernel" class="support__link" title="X (Twitter)" target="_blank">
+                            <i class="bi bi-twitter-x"></i> Twitter
+                        </a>
+                    </li>
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://www.dotkernel.com/blog/" class="support__link" title="Blog" target="_blank">
+                            <i class="bi bi-file-post"></i> Blog
+                        </a>
+                    </li>
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://www.dotkernel.com/feed/" class="support__link" title="Blog feed" target="_blank">
+                            <i class="bi bi-rss-fill"></i> Feed
+                        </a>
+                    </li>
+                    <li class="support__list-item col-lg-6 mb-md-3">
+                        <a href="https://github.com/orgs/dotkernel/discussions" class="support__link" title="Blog feed" target="_blank">
+                            <i class="bi bi-chat-left-text"></i> Discussions
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <hr class="mt-5" />
+
+        <div class="footer_copy">
+            &#169; Copyright Dotkernel <span id="current-year"></span>. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+        <script>
+            let base_url = '../..',
+                project  = "packages",
+                siteName = 'dot-totp';
+
+                document.addEventListener("DOMContentLoaded", function() {
+                    document.querySelectorAll('.subnavigation__link').forEach(function(link) {
+                        if (link.getAttribute('href') === './') {
+                            link.parentNode.parentNode.classList.add('show');
+                        }
+                    });
+                });
+        </script>
+<!--        -->
+<!--        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="Search Modal" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Search</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form role="form">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search in dot-totp" id="mkdocs-search-query">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results"></div>
+            </div>
+        </div>
+    </div>
+</div>-->
+    </body>
+</html>
