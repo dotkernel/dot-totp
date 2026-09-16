@@ -11,10 +11,17 @@ nav:
       - Overview: v1/overview.md
       - Installation: v1/installation.md
       - Configuration: v1/configuration.md
-      - Usage: v1/usage.md
+      - Usage:
+          - App: v1/usage/app.md
+          - Email: v1/usage/email.md
+          - SMS: v1/usage/sms.md
       - Methods: v1/methods.md
 site_name: dot-totp
 site_description: "DotKernel TOTP authorization component"
 repo_url: "https://github.com/dotkernel/dot-totp"
+markdown_extensions:
+  - pymdownx.snippets:
+      base_path:
+        - docs/snippets
 plugins:
   - search

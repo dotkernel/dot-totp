@@ -4,9 +4,9 @@ A code is derived from a shared secret and the current time step, so the same co
 
 | Method | How the user gets the code | Secret lives |
 | --- | --- | --- |
-| `app` | Scans a QR code once, then their device derives every code offline | Server and device |
-| `email` | The server derives the code and sends it by email | Server only |
-| `sms` | The server derives the code and sends it by SMS | Server only |
+| [`app`](usage/app.md) | Scans a QR code once, then their device derives every code offline | Server and device |
+| [`email`](usage/email.md) | The server derives the code and sends it by email | Server only |
+| [`sms`](usage/sms.md) | The server derives the code and sends it by SMS | Server only |
 
 Generation and verification are the same two calls in all three cases.
 `getCode()` is what lets the server derive the code it expects, so email and SMS need no second implementation.
