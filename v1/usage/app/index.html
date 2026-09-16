@@ -18,11 +18,11 @@
         <meta name="docsearch:component" content="dot-totp">
 
         
-        <link rel="canonical" href="https://docs.dotkernel.org/dot-totp/v1/methods/">
+        <link rel="canonical" href="https://docs.dotkernel.org/dot-totp/v1/usage/app/">
         
         <link rel="shortcut icon" href="https://docs.dotkernel.org/img/dk_docs_favicon_white.svg">
 
-        <title>Methods - dot-totp - Dotkernel Documentation</title>
+        <title>App - dot-totp - Dotkernel Documentation</title>
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -154,7 +154,7 @@
                     
     <div class="subnavigation hidden-print">
 <!--        <h4 class="subnavigation__title">-->
-<!--            <a href="../..">dot-totp</a>-->
+<!--            <a href="../../..">dot-totp</a>-->
 <!--        </h4>-->
 
         <h5 class="subnavigation__title">Table of Contents</h5>
@@ -167,19 +167,19 @@
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../overview/" class="subnavigation__link">Overview</a>
+    <a href="../../overview/" class="subnavigation__link">Overview</a>
 </li>
 
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../installation/" class="subnavigation__link">Installation</a>
+    <a href="../../installation/" class="subnavigation__link">Installation</a>
 </li>
 
                     
                         
 <li class="subnavigation__list-item ">
-    <a href="../configuration/" class="subnavigation__link">Configuration</a>
+    <a href="../../configuration/" class="subnavigation__link">Configuration</a>
 </li>
 
                     
@@ -204,20 +204,20 @@
     <ul class="subnavigation__list collapse" id="usage">
         
         
-<li class="subnavigation__list-item ">
-    <a href="../usage/app/" class="subnavigation__link">App</a>
+<li class="subnavigation__list-item subnavigation__list-item--active">
+    <a href="./" class="subnavigation__link">App</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../usage/email/" class="subnavigation__link">Email</a>
+    <a href="../email/" class="subnavigation__link">Email</a>
 </li>
 
         
         
 <li class="subnavigation__list-item ">
-    <a href="../usage/sms/" class="subnavigation__link">SMS</a>
+    <a href="../sms/" class="subnavigation__link">SMS</a>
 </li>
 
         
@@ -226,8 +226,8 @@
 
                     
                         
-<li class="subnavigation__list-item subnavigation__list-item--active">
-    <a href="./" class="subnavigation__link">Methods</a>
+<li class="subnavigation__list-item ">
+    <a href="../../methods/" class="subnavigation__link">Methods</a>
 </li>
 
                     
@@ -247,7 +247,7 @@
             
 
             
-                <li class="breadcrumb-item"><a href="../..">dot-totp</a></li>
+                <li class="breadcrumb-item"><a href="../../..">dot-totp</a></li>
 
                 
                     
@@ -255,8 +255,15 @@
                         
                     
                 
+                    
+                        
+                        
+                            <li class="breadcrumb-item">Usage</li>
+                        
+                    
+                
 
-                <li class="breadcrumb-item active" aria-current="page">Methods</li>
+                <li class="breadcrumb-item active" aria-current="page">App</li>
             
         
     </ol>
@@ -269,6 +276,8 @@
 
 
     
+    
+<!--        <h2 class="chapter__headline text-black-50">Usage</h2>-->
     
 
     
@@ -291,17 +300,17 @@
                     </span>
                 </button>
                 <div class="md-actions-menu" role="menu">
-                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../methods.md"
+                    <button type="button" class="md-actions-item" role="menuitem" data-copy-url="../app.md"
                             onclick="copyMarkdownPage(this)">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
                         <span class="label">Copy Page (as Markdown)</span>
                     </button>
-                    <a href="../methods.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
+                    <a href="../app.md" target="_blank" rel="alternate noopener noreferrer" type="text/markdown"
                        class="md-actions-item" role="menuitem" title="View the Markdown source of this page">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h9l7 7v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"/><path d="M13 4v6h6"/><path d="M8 15h8M8 11h4"/></svg>
                         <span class="label">View as Markdown</span>
                     </a>
-                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/dot-totp/v1/methods.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
+                    <a href="https://claude.ai/new?q=Read%20from%20https%3A//docs.dotkernel.org/dot-totp/v1/usage/app.md%20so%20I%20can%20ask%20questions%20about%20it." target="_blank" rel="noopener noreferrer"
                        class="md-actions-item" role="menuitem" title="Open this page in Claude">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3l2.5 5.5L20 11l-5.5 2.5L12 19l-2.5-5.5L4 11l5.5-2.5z"/></svg>
                         <span class="label">Open in Claude</span>
@@ -311,56 +320,223 @@
         </div>
     
 
-    <h1 id="methods">Methods</h1>
-<p>A code is derived from a shared secret and the current time step, so the same code can reach the user three ways:</p>
+    <h1 id="app">App</h1>
+<p>The <code>app</code> method. The user scans a QR code once, and from then on their authenticator app derives every code offline - the code never travels, which makes this the strongest of the three methods.</p>
+<p>The container gives you a single service, configured from <code>dot_totp.options</code>:</p>
+<pre class="highlight"><code class="language-php">use Dot\Totp\Totp;
+
+$totp = $container-&gt;get(Totp::class);</code></pre>
 <div class="table-responsive"><table>
 <thead>
 <tr>
 <th>Method</th>
-<th>How the user gets the code</th>
-<th>Secret lives</th>
+<th>Purpose</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="../usage/app/"><code>app</code></a></td>
-<td>Scans a QR code once, then their device derives every code offline</td>
-<td>Server and device</td>
+<td><code>generateSecretBase32(int $length = 16): string</code></td>
+<td>A new random Base32 secret.</td>
 </tr>
 <tr>
-<td><a href="../usage/email/"><code>email</code></a></td>
-<td>The server derives the code and sends it by email</td>
-<td>Server only</td>
+<td><code>getProvisioningUri(string $label, string $issuer, string $secret): string</code></td>
+<td>The <code>otpauth://totp/...</code> URI an authenticator app scans.</td>
 </tr>
 <tr>
-<td><a href="../usage/sms/"><code>sms</code></a></td>
-<td>The server derives the code and sends it by SMS</td>
-<td>Server only</td>
+<td><code>generateInlineSvgQr(string $data, int $size = 180): string</code></td>
+<td>An inline SVG QR code for that URI.</td>
+</tr>
+<tr>
+<td><code>verifyCode(string $secret, string $code, int $window = 1): bool</code></td>
+<td>Whether a submission matches, checking <code>$window</code> steps either side of now.</td>
+</tr>
+<tr>
+<td><code>generateRecoveryCodes(int $count = 8, int $length = 10, string $separator = '-'): array</code></td>
+<td>Single-use fallback codes in plain text.</td>
+</tr>
+<tr>
+<td><code>hashRecoveryCodes(array $codes): array</code></td>
+<td>The same codes hashed with <code>password_hash()</code>, for storage.</td>
+</tr>
+<tr>
+<td><code>validateRecoveryCode(string $inputCode, array &amp;$hashedCodes): bool</code></td>
+<td>Consumes a matching code, <strong>modifying the array by reference</strong>.</td>
+</tr>
+<tr>
+<td><code>getPeriod(): int</code> / <code>getDigits(): int</code> / <code>getAlgorithm(): string</code></td>
+<td>The configured options.</td>
 </tr>
 </tbody>
 </table></div>
-<p>Generation and verification are the same two calls in all three cases.
-<code>getCode()</code> is what lets the server derive the code it expects, so email and SMS need no second implementation.</p>
-<p><code>app</code> is the strongest of the three, because the code never travels. Offer the others to users who cannot or will not install an authenticator app.</p>
-<h2 id="why-delivered-codes-need-a-wider-window">Why delivered codes need a wider window</h2>
-<p>A delivered code has to survive a mail queue or an SMS carrier, so it cannot expire after one time step of <code>period</code> seconds.
-Widening <code>verifyCode()</code>'s <code>$window</code> is how its lifetime is extended, and it costs something: every step inside the window is a valid code, and a code stays valid for the whole window rather than being consumed on use.</p>
-<p>Three measures pay for that, and none of them is optional.</p>
-<ul>
-<li><strong>Rotate the secret on success.</strong> A delivery user's secret exists only on the server, so replacing it after an accepted code makes that code single-use and invalidates every other code still inside the window.</li>
-<li><strong>Cap the attempts.</strong> A six-digit code is about a million combinations, and a wide window means several are live at once. The attempt limit, not the algorithm, is what makes guessing impractical.</li>
-<li><strong>Cool down the resend.</strong> Without it a caller can spend every attempt, request a fresh code immediately, and repeat at full speed.</li>
-</ul>
+<p><code>getCode()</code> is not listed: the user's device derives the code, so the server only ever verifies one.</p>
+<h2 id="entity-trait">Entity trait</h2>
+<p>Add the following trait to the entity that authenticates. It carries only what the <code>app</code> method needs:</p>
+<pre class="highlight"><code class="language-php">&lt;?php
+
+declare(strict_types=1);
+
+namespace YourApp\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+trait TotpTrait
+{
+    public const string TOTP_METHOD_APP   = 'app';
+    public const string TOTP_METHOD_EMAIL = 'email';
+    public const string TOTP_METHOD_SMS   = 'sms';
+
+    #[ORM\Column(name: 'totp_secret', type: 'string', length: 32, nullable: true)]
+    protected ?string $totpSecret = null;
+
+    #[ORM\Column(name: 'totp_enabled', type: 'boolean', options: ['default' =&gt; false])]
+    protected bool $totpEnabled = false;
+
+    #[ORM\Column(name: 'totp_method', type: 'string', length: 16, options: ['default' =&gt; 'app'])]
+    protected string $totpMethod = self::TOTP_METHOD_APP;
+
+    /** @var array&lt;int, string&gt;|null */
+    #[ORM\Column(name: 'totp_recovery_codes', type: 'json', nullable: true)]
+    protected ?array $totpRecoveryCodes = null;
+
+    public function enableTotp(string $secret, string $method = self::TOTP_METHOD_APP): self
+    {
+        $this-&gt;totpSecret  = $secret;
+        $this-&gt;totpEnabled = true;
+        $this-&gt;totpMethod  = $method;
+
+        return $this;
+    }
+
+    public function disableTotp(): self
+    {
+        $this-&gt;totpSecret        = null;
+        $this-&gt;totpEnabled       = false;
+        $this-&gt;totpMethod        = self::TOTP_METHOD_APP;
+        $this-&gt;totpRecoveryCodes = null;
+
+        return $this;
+    }
+
+    public function isTotpEnabled(): bool
+    {
+        return $this-&gt;totpEnabled;
+    }
+
+    public function getTotpSecret(): ?string
+    {
+        return $this-&gt;totpSecret;
+    }
+
+    public function getTotpMethod(): string
+    {
+        return $this-&gt;totpMethod;
+    }
+
+    public function usesTotpDelivery(): bool
+    {
+        return $this-&gt;totpMethod !== self::TOTP_METHOD_APP;
+    }
+
+    /**
+     * @return array&lt;int, string&gt;
+     */
+    public function getTotpRecoveryCodes(): array
+    {
+        return $this-&gt;totpRecoveryCodes ?? [];
+    }
+
+    /**
+     * @param array&lt;int, string&gt; $hashedCodes
+     */
+    public function setTotpRecoveryCodes(array $hashedCodes): self
+    {
+        $this-&gt;totpRecoveryCodes = $hashedCodes;
+
+        return $this;
+    }
+}</code></pre>
+<div class="table-responsive"><table>
+<thead>
+<tr>
+<th>Column</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>totp_secret</code></td>
+<td>The shared Base32 secret.</td>
+</tr>
+<tr>
+<td><code>totp_enabled</code></td>
+<td>Whether the second factor is on.</td>
+</tr>
+<tr>
+<td><code>totp_method</code></td>
+<td><code>app</code>, <code>email</code> or <code>sms</code>, so the application knows how to deliver a code.</td>
+</tr>
+<tr>
+<td><code>totp_recovery_codes</code></td>
+<td>Hashes of the codes not yet used.</td>
+</tr>
+</tbody>
+</table></div>
+<p>With no recovery codes, <code>totp_secret</code> and <code>totp_enabled</code> are the only columns you need.</p>
+<p>This trait is a strict subset of the one on <a href="../email/">Email</a> and <a href="../sms/">SMS</a>. Adding a delivery method later means adding members to it, never changing the ones above.</p>
+<pre class="highlight"><code class="language-php">#[ORM\Entity]
+class User
+{
+    use TotpTrait;
+}</code></pre>
+<p>The <code>totp_*</code> columns carry defaults so the <code>ALTER TABLE</code> succeeds on a populated table.
+Then generate a migration:</p>
+<pre class="highlight"><code class="language-shell">php bin/doctrine migrations:diff</code></pre>
 <blockquote>
-<p>The cooldown is per user. It does not slow an attacker spraying codes at many accounts, so rate limit the routes as well.</p>
+<p>The method constants live on the trait, and PHP requires reading them through the class that uses it - <code>User::TOTP_METHOD_APP</code>, not <code>TotpTrait::TOTP_METHOD_APP</code>.</p>
 </blockquote>
-<h2 id="security-notes">Security notes</h2>
-<ul>
-<li>Never log a code, a secret or a provisioning URI - the URI carries the secret in its query string.</li>
-<li>Keep the secret out of the database until an app user has confirmed a code derived from it.</li>
-<li>Send only to an address or phone number the user has already verified.</li>
-<li>Store recovery codes hashed, and only hashed.</li>
-</ul>
+<h2 id="enrolling-a-user">Enrolling a user</h2>
+<p>An authenticator app enrols by scanning a QR code:</p>
+<pre class="highlight"><code class="language-php">$secret = $totp-&gt;generateSecretBase32();
+$uri    = $totp-&gt;getProvisioningUri($user-&gt;getIdentity(), 'Your App', $secret);
+$svg    = $totp-&gt;generateInlineSvgQr($uri);</code></pre>
+<p><code>generateInlineSvgQr()</code> returns SVG markup, so the template embeds it directly - there is no image file to write or serve.</p>
+<p>Hold <code>$secret</code> in the session, not in the database, until the user has typed a code from their app.
+Otherwise a QR code that was never scanned successfully leaves the user with a factor they cannot satisfy.</p>
+<pre class="highlight"><code class="language-php">if (! $totp-&gt;verifyCode($secret, $submittedCode)) {
+    return $this-&gt;error('That code is not correct. Check the time on your phone and try again.');
+}
+
+$user-&gt;enableTotp($secret);
+$entityManager-&gt;flush();</code></pre>
+<p><code>enableTotp()</code> defaults to <code>TOTP_METHOD_APP</code>, so no method argument is needed here.</p>
+<h2 id="verifying-a-code">Verifying a code</h2>
+<p>At sign-in, a code from an authenticator app is verified with the default window, which accepts the previous, current and next time step - about ninety seconds with a 30-second <code>period</code>, enough to absorb a phone's clock drift:</p>
+<pre class="highlight"><code class="language-php">if (! $totp-&gt;verifyCode((string) $user-&gt;getTotpSecret(), $submittedCode)) {
+    return $this-&gt;error('That code is not correct.');
+}</code></pre>
+<p>There is nothing to send first, so an app user is asked for a code straight away. <code>usesTotpDelivery()</code> returns <code>false</code> for this method, which is how a sign-in flow that also offers a delivery method tells the two apart.</p>
+<p>Nothing else is required: the secret stays put, and there is no attempt counter or resend cooldown to maintain. Those exist only for delivered codes, and <a href="../../methods/">Methods</a> explains why.</p>
+<h2 id="recovery-codes">Recovery codes</h2>
+<p>If a user loses the device holding the secret, a recovery code is the only way back in.</p>
+<p>Generate the codes once, show them once, and store only their hashes:</p>
+<pre class="highlight"><code class="language-php">$codes = $totp-&gt;generateRecoveryCodes();
+// ['A2C4E-6GH8J', 'K3M5P-7QR9S', ...]
+
+$user-&gt;setTotpRecoveryCodes($totp-&gt;hashRecoveryCodes($codes));
+$entityManager-&gt;flush();
+
+// $codes is the only chance the user has to write them down.</code></pre>
+<p><code>validateRecoveryCode()</code> takes the hashes <strong>by reference</strong> and removes the one it consumes, so the mutated array has to be persisted or the code stays usable:</p>
+<pre class="highlight"><code class="language-php">$hashedCodes = $user-&gt;getTotpRecoveryCodes();
+
+if (! $totp-&gt;validateRecoveryCode($submittedCode, $hashedCodes)) {
+    return $this-&gt;error('That recovery code is not valid.');
+}
+
+$user-&gt;setTotpRecoveryCodes($hashedCodes);
+$entityManager-&gt;flush();</code></pre>
+<h2 id="other-methods">Other methods</h2>
+<p><a href="../email/">Email</a> and <a href="../sms/">SMS</a> cover the two delivery methods. <a href="../../methods/">Methods</a> compares all three.</p>
 
 
 
@@ -370,15 +546,20 @@ Widening <code>verifyCode()</code>'s <code>$window</code> is how its lifetime is
         
         <li class="col text-nowrap text-md-start">
             
-                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../usage/sms/">
+                <a rel="prev" class="page-nav__link page-nav__link--prev" href="../../configuration/">
                     <i class="bi bi-chevron-left"></i>
-                    SMS
+                    Configuration
                 </a>
             
         </li>
 
         
         <li class="col text-nowrap text-md-end pe-0">
+            
+                <a rel="next" class="page-nav__link page-nav__link--next" href="../email/">
+                    Email
+                    <i class="bi bi-chevron-right"></i>
+                </a>
             
         </li>
     </ul>
@@ -402,11 +583,23 @@ Widening <code>verifyCode()</code>'s <code>$window</code> is how its lifetime is
             <ul class="toc__list">
             
                 <li class="toc__entry">
-                    <a href="#why-delivered-codes-need-a-wider-window" class="toc__link nav-link">Why delivered codes need a wider window</a>
+                    <a href="#entity-trait" class="toc__link nav-link">Entity trait</a>
                 </li>
             
                 <li class="toc__entry">
-                    <a href="#security-notes" class="toc__link nav-link">Security notes</a>
+                    <a href="#enrolling-a-user" class="toc__link nav-link">Enrolling a user</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#verifying-a-code" class="toc__link nav-link">Verifying a code</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#recovery-codes" class="toc__link nav-link">Recovery codes</a>
+                </li>
+            
+                <li class="toc__entry">
+                    <a href="#other-methods" class="toc__link nav-link">Other methods</a>
                 </li>
             
             </ul>
@@ -460,7 +653,7 @@ Widening <code>verifyCode()</code>'s <code>$window</code> is how its lifetime is
 </footer>
 
         <script>
-            let base_url = '../..',
+            let base_url = '../../..',
                 project  = "packages",
                 siteName = 'dot-totp';
 
