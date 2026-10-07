@@ -11,7 +11,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-class TotpFactoryTest extends TestCase
+final class TotpFactoryTest extends TestCase
 {
     /**
      * @throws ContainerExceptionInterface
