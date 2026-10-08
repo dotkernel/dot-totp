@@ -12,7 +12,7 @@ use function explode;
 use function password_verify;
 use function strlen;
 
-class TotpTest extends TestCase
+final class TotpTest extends TestCase
 {
     public function testConstructorDefaults(): void
     {

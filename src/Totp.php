@@ -190,7 +190,7 @@ class Totp
 
     public function hashRecoveryCodes(array $codes): array
     {
-        return array_map(fn($code) => password_hash($code, PASSWORD_DEFAULT), $codes);
+        return array_map(static fn($code) => password_hash($code, PASSWORD_DEFAULT), $codes);
     }
 
     public function validateRecoveryCode(string $inputCode, array &$hashedCodes): bool

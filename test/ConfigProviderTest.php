@@ -9,7 +9,7 @@ use Dot\Totp\Totp;
 use Dot\Totp\TotpFactory;
 use PHPUnit\Framework\TestCase;
 
-class ConfigProviderTest extends TestCase
+final class ConfigProviderTest extends TestCase
 {
     private ConfigProvider $provider;
 
