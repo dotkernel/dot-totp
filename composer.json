@@ -23,7 +23,7 @@
     },
 
     "require": {
-        "php": "~8.3.0 || ~8.4.0 || ~8.5.0",
+        "php": "~8.3.0 || ~8.4.0 || ~8.5.0 || ~8.6.0",
         "endroid/qr-code":  "^6.0.9",
         "psr/container": "^1.1 || ^2.0.0"
     },
@@ -32,7 +32,7 @@
         "laminas/laminas-coding-standard": "^2.5",
         "phpstan/phpstan": "^2.1.33",
         "phpstan/phpstan-phpunit": "^2.0.10",
-        "phpunit/phpunit": "^10.2"
+        "phpunit/phpunit": "^12.5.22"
     },
     "autoload": {
         "psr-4": {
